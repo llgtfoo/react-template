@@ -41,22 +41,5 @@ export async function getInitialState() {
     settings: {},
   };
 }
-// export const request = {
-//   errorHandler: (error) => {
-//     const { response } = error;
-
-//     if (!response) {
-//       notification.error({
-//         description: '您的网络发生异常，无法连接服务器',
-//         message: '网络异常',
-//       });
-//     }
-
-//     throw error;
-//   },
-// }; // ProLayout 支持的api https://procomponents.ant.design/components/layout
-
-// request接口请求工具
-// export { layout, request };
 
 export { layout, request };

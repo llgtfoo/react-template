@@ -6,12 +6,13 @@ export default {
         {
           path: '/Welcome',
           name: '欢迎页',
-          //   icon: 'smile',
+          icon: 'icon-shoucang1',
+          // hideInMenu: true,
         },
         {
           path: '/admin',
           name: '系统',
-          //   icon: 'crown',
+          icon: 'icon-twitter',
           children: [
             {
               path: '/admin/sub-page',
@@ -22,7 +23,7 @@ export default {
         },
         {
           name: '表格展示',
-          //   icon: 'table',
+          icon: 'icon-facebook',
           path: '/table',
           children: [
             {
@@ -34,7 +35,7 @@ export default {
         },
         {
           name: '菜单',
-          //   icon: 'table',
+          icon: 'icon-facebook',
           path: '/menu',
           children: [
             {

@@ -2,9 +2,7 @@ import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import React, { useEffect } from 'react';
 import { connect } from 'umi';
 
-console.log(connect, 'connect');
 const Admin = (props) => {
-  console.log(props, 'props');
   const { dispatch, common } = props;
   useEffect(() => {
     dispatch({ type: 'common/getTopics' });
