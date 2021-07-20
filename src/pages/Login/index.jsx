@@ -88,7 +88,11 @@ export default function Login(props) {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
           >
-            <Form.Item label="用户名" name="username" rules={[{ validator: validateUsername }]}>
+            <Form.Item
+              label="用户名"
+              name="username"
+              rules={[{ validator: validateUsername }]}
+            >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
                 placeholder="请输入用户名"
@@ -96,7 +100,11 @@ export default function Login(props) {
               />
             </Form.Item>
 
-            <Form.Item label="密码" name="password" rules={[{ validator: validatePassword }]}>
+            <Form.Item
+              label="密码"
+              name="password"
+              rules={[{ validator: validatePassword }]}
+            >
               <Input
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 type="password"

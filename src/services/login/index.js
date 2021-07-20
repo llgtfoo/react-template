@@ -1,4 +1,4 @@
-import { request } from 'umi';
+import request from '@/utils/request';
 
 /** 获取当前的用户 GET /api/currentUser */
 export async function currentUser(options) {
@@ -19,8 +19,8 @@ export async function login(body, options) {
     ...(options || {}),
   });
 }
-/** 退出登录接口 POST /api/login/outLogin */
 
+/** 退出登录接口 POST /api/login/outLogin */
 export async function outLogin(options) {
   return request('/api/login/outLogin', {
     method: 'POST',

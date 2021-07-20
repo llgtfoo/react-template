@@ -56,7 +56,8 @@ export default {
       success: true,
       data: {
         userName: 'llgtfoo',
-        avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+        avatar:
+          'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
         userId: '00000001',
         email: 'llgtfoo@163.com',
         access: getAccess(),
