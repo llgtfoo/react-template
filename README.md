@@ -2,56 +2,90 @@
 
 This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
 
-## Environment Prepare
+## 基于 Ant Design Pro 简化上手难度操作（删除不常用文件和工具，开发更高效，简单上手）
 
-Install `node_modules`:
+# 目录结构
 
-```bash
-npm install
 ```
+page-tpl-react
+├─ .editorconfig
+├─ .eslintignore
+├─ .eslintrc.js
+├─ .gitignore
+├─ .prettierignore
+├─ .prettierrc.js
+├─ .stylelintrc.js
+├─ config
+│  ├─ config.dev.js
+│  ├─ config.js
+│  ├─ defaultSettings.js
+│  ├─ proxy.js
+│  └─ routes.js
+├─ mock
+│  ├─ listTableList.js
+│  ├─ login.js
+│  ├─ menu.js
+│  ├─ notices.js
+│  └─ route.js
+├─ package.json
+├─ public
+│  ├─ favicon.ico
+│  └─ logo.svg
+├─ README.md
+└─ src
+   ├─ access.js
+   ├─ app.jsx
+   ├─ assets
+   │  ├─ css
+   │  │  └─ scroll.less
+   │  └─ imgs
+   │     └─ login.png
+   ├─ components
+   │  ├─ Footer
+   │  │  └─ index.jsx
+   │  ├─ HeaderDropdown
+   │  │  ├─ index.jsx
+   │  │  └─ index.less
+   │  ├─ index.md
+   │  ├─ NoticeIcon
+   │  │  ├─ index.jsx
+   │  │  ├─ index.less
+   │  │  ├─ NoticeIcon.jsx
+   │  │  ├─ NoticeList.jsx
+   │  │  └─ NoticeList.less
+   │  └─ RightContent
+   │     ├─ AvatarDropdown.jsx
+   │     ├─ index.jsx
+   │     └─ index.less
+   ├─ global.jsx
+   ├─ global.less
+   ├─ layout
+   │  └─ index.js
+   ├─ models
+   │  └─ common.js
+   ├─ pages
+   │  ├─ 404.jsx
+   │  ├─ Admin
+   │  │  └─ index.jsx
+   │  ├─ document.ejs
+   │  ├─ Login
+   │  │  ├─ index.jsx
+   │  │  └─ index.less
+   │  ├─ TableList
+   │  │  ├─ components
+   │  │  │  └─ UpdateForm.jsx
+   │  │  └─ index.jsx
+   │  └─ Welcome
+   │     ├─ index.jsx
+   │     └─ index.less
+   ├─ services
+   │  ├─ login
+   │  │  └─ index.js
+   │  ├─ menu
+   │  │  └─ index.js
+   │  └─ table
+   │     └─ index.js
+   └─ utils
+      └─ request.js
 
-or
-
-```bash
-yarn
 ```
-
-## Provided Scripts
-
-Ant Design Pro provides some useful script to help you quick start and build with web project, code style check and test.
-
-Scripts provided in `package.json`. It's safe to modify or add additional script:
-
-### Start project
-
-```bash
-npm start
-```
-
-### Build project
-
-```bash
-npm run build
-```
-
-### Check code style
-
-```bash
-npm run lint
-```
-
-You can also use script to auto fix some lint error:
-
-```bash
-npm run lint:fix
-```
-
-### Test code
-
-```bash
-npm test
-```
-
-## More
-
-You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).
