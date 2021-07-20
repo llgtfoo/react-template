@@ -1,5 +1,5 @@
-import Footer from '@/components/Footer';
 import RightContent from '@/components/RightContent';
+import { getMenu } from '@/services/menu/index';
 import { TwitterOutlined } from '@ant-design/icons';
 import { history } from 'umi';
 
@@ -9,7 +9,15 @@ export const layout = ({ initialState }) => {
     title: '系统名称', // 系统左上角logo
     logo: () => <TwitterOutlined style={{ fontSize: '40px', color: '#1890ff' }} />, // 系统左上角logo
     rightContentRender: () => <RightContent />,
-    footerRender: () => <Footer />,
+    // 服务器获取菜单
+    menu: {
+      params: {},
+      request: async () => {
+        const { data } = await getMenu();
+        return data;
+      },
+    },
+    // footerRender: () => <Footer />,
     menuHeaderRender: undefined,
     disableContentMargin: false,
     // 系统水印

@@ -1,8 +1,8 @@
 import { layout } from '@/layout/';
-import { request } from '@/utils/request';
 import { PageLoading } from '@ant-design/pro-layout';
 import { history } from 'umi';
-import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
+import { currentUser as queryCurrentUser } from './services/login/index';
+import { request } from './utils/request';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -41,7 +41,22 @@ export async function getInitialState() {
     settings: {},
   };
 }
-// request接口请求工具
-// layout菜单布局
-export { request,layout };
+// export const request = {
+//   errorHandler: (error) => {
+//     const { response } = error;
 
+//     if (!response) {
+//       notification.error({
+//         description: '您的网络发生异常，无法连接服务器',
+//         message: '网络异常',
+//       });
+//     }
+
+//     throw error;
+//   },
+// }; // ProLayout 支持的api https://procomponents.ant.design/components/layout
+
+// request接口请求工具
+// export { layout, request };
+
+export { layout, request };

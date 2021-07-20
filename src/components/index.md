@@ -52,7 +52,7 @@ export default () => {
 };
 ```
 
-## HeaderSearch 头部搜索框
+<!-- ## HeaderSearch 头部搜索框
 
 一个带补全数据的输入框，支持收起和展开 Input
 
@@ -102,7 +102,7 @@ export default () => {
 | options         | 选项菜单的的列表                   | `{label,value}[]`            | -      |
 | defaultVisible  | 输入框默认是否显示，只有第一次生效 | `boolean`                    | -      |
 | visible         | 输入框是否显示                     | `boolean`                    | -      |
-| onVisibleChange | 输入框显示隐藏的回调函数           | `(visible: boolean) => void` | -      |
+| onVisibleChange | 输入框显示隐藏的回调函数           | `(visible: boolean) => void` | -      | -->
 
 ## NoticeIcon 通知工具
 

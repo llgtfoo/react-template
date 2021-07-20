@@ -22,9 +22,24 @@ import { notification } from 'antd';
  */
 
 export const request = {
+  // 请求拦截器
+  requestInterceptors: [
+    (url, options) => {
+      return {
+        url: `${url}`,
+        options: { ...options, interceptors: true },
+      };
+    },
+  ],
+  // 相应拦截器
+  responseInterceptors: [
+    (response, options) => {
+      // response.headers.append('interceptors', 'yes yo');
+      return response;
+    },
+  ],
   errorHandler: (error) => {
     const { response } = error;
-    console.log(error, 'errorllgtfoo');
     if (!response) {
       notification.error({
         description: '您的网络发生异常，无法连接服务器',
@@ -34,4 +49,4 @@ export const request = {
 
     throw error;
   },
-}; // ProLayout 支持的api https://procomponents.ant.design/components/layout
+};
