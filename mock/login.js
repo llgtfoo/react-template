@@ -33,7 +33,7 @@ export default {
         status: 'ok',
         type,
         currentAuthority: 'user',
-        token: 'brear lkkdkdkfkkfkffkfkfk',
+        token: 'brear lkkdkdkfkkfqkffkfkfk',
       });
       access = 'user';
       return;

@@ -1,17 +1,26 @@
 export default [
   {
-    name: 'login',
-    path: '/login',
-    component: '@/pages/Login/index',
-  },
-  {
     path: '/',
-    component: '@/layouts/index',
+    component: '@/layouts/BlankLayout',
     routes: [
-      { path: '/', redirect: '/index' },
       {
-        path: '/index',
-        component: '@/pages/Index/index',
+        name: 'login',
+        path: '/login',
+        component: '@/pages/Login/index',
+      },
+      {
+        path: '/',
+        component: '@/layouts/index',
+        routes: [
+          { path: '/', redirect: '/index' },
+          {
+            path: '/index',
+            component: '@/pages/Index/index',
+          },
+          {
+            component: '@/pages/404',
+          },
+        ],
       },
     ],
   },

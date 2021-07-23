@@ -37,7 +37,7 @@ const errorHandler = (error) => {
       message: '网络异常',
     });
   }
-  return response;
+  throw response;
 };
 
 /** 配置request请求时的默认参数 */
@@ -52,6 +52,7 @@ const request = extend({
 
 // request拦截器, 改变url 或 options.
 request.interceptors.request.use((url, options) => {
+  console.log('请求拦截器');
   return {
     url: `${url}`,
     options: { ...options, interceptors: true },

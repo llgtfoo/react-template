@@ -16,12 +16,6 @@ export default defineConfig({
   targets: {
     ie: 10,
   },
-  // layout: {
-  //   // https://umijs.org/zh-CN/plugins/plugin-layout
-  //   locale: true,
-  //   siderWidth: 208,
-  //   ...defaultSettings,
-  // },
   dynamicImport: {
     loading: '@ant-design/pro-layout/es/PageLoading',
   },
