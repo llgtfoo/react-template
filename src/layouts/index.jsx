@@ -1,56 +1,45 @@
-import {
-  LaptopOutlined,
-  NotificationOutlined,
-  TwitterOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import React, { useEffect, useState } from 'react';
+import NavBar from '../components/NavBar/index';
+import { getMenus } from '../services/menu/index';
 import './index.less';
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 export default function index(props) {
   const [count, setCount] = useState(0);
-  useEffect(() => {});
+  const [collapsed, setCollapsed] = useState(false);
+  const [openKeys, setOpenKeys] = useState(['sub1']);
+  const [selectedKeys, setSelectedKeys] = useState(['1']);
+  useEffect(async () => {
+    const result = await getMenus();
+    console.log(result, 'result');
+  }, []);
   return (
     <>
       <Layout className="layout-nav">
-        <Header className="header">
-          <div className="logo">
-            <TwitterOutlined style={{ fontSize: '40px', color: '#1890ff' }} />
-            <span>系统名称</span>
-          </div>
-          <div className="right-content"></div>
-        </Header>
-        <Layout>
-          <Sider width={200} className="site-layout-background">
+        <NavBar></NavBar>
+        <Layout className="menu-main">
+          <Sider
+            width={208}
+            collapsible
+            collapsed={collapsed}
+            onCollapse={() => setCollapsed(!collapsed)}
+            className="site-layout-background"
+          >
             <Menu
               mode="inline"
+              openKeys={openKeys}
+              selectedKeys={selectedKeys}
               defaultSelectedKeys={['1']}
               defaultOpenKeys={['sub1']}
+              theme="dark"
               style={{ height: '100%', borderRight: 0 }}
             >
-              <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
+              <SubMenu key="sub1" title={<>subnav 1</>}>
                 <Menu.Item key="1">option1</Menu.Item>
                 <Menu.Item key="2">option2</Menu.Item>
                 <Menu.Item key="3">option3</Menu.Item>
                 <Menu.Item key="4">option4</Menu.Item>
-              </SubMenu>
-              <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
-                <Menu.Item key="5">option5</Menu.Item>
-                <Menu.Item key="6">option6</Menu.Item>
-                <Menu.Item key="7">option7</Menu.Item>
-                <Menu.Item key="8">option8</Menu.Item>
-              </SubMenu>
-              <SubMenu
-                key="sub3"
-                icon={<NotificationOutlined />}
-                title="subnav 3"
-              >
-                <Menu.Item key="9">option9</Menu.Item>
-                <Menu.Item key="10">option10</Menu.Item>
-                <Menu.Item key="11">option11</Menu.Item>
-                <Menu.Item key="12">option12</Menu.Item>
               </SubMenu>
             </Menu>
           </Sider>
@@ -60,14 +49,7 @@ export default function index(props) {
               <Breadcrumb.Item>List</Breadcrumb.Item>
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
-            <Content
-              className="site-layout-background"
-              style={{
-                padding: 24,
-                margin: 0,
-                minHeight: 280,
-              }}
-            >
+            <Content className="site-layout-background">
               {props.children}
             </Content>
           </Layout>
