@@ -91,7 +91,10 @@ export default ({ children }) => {
             title: '',
             //自定义面包屑
             breadcrumbRender: (props, originBreadcrumb) => {
-              const breadcrumb = props.currentMenu.locale.split('.').slice(1);
+              const breadcrumb =
+                Object.keys(props.currentMenu).length > 0
+                  ? props.currentMenu.locale.split('.').slice(1)
+                  : [];
               return (
                 <Breadcrumb>
                   {breadcrumb.map((item, index) => (
