@@ -6,29 +6,30 @@ const waitTime = (time = 100) => {
   });
 };
 export default {
-  'GET /api/getMenus': (req, res) => {
+  'GET /api/getMenus': async (req, res) => {
+    await waitTime(1000);
     res.send({
       success: true,
       data: [
         {
-          cname: '模块一',
-          cnameKey: '/home',
-          normalUrl: '/home',
-          icon: 'icon-Moneymanagement-fill',
+          name: '模块一',
+          path: '/home',
+          icon: 'icon-shoucang1',
           children: [
             {
-              cname: '子菜单一',
-              cnameKey: '/home/index1',
-              normalUrl: '/home/index1',
-              icon: 'icon-Moneymanagement-fill',
+              name: '子菜单一',
+              path: '/home/index1',
             },
             {
-              cname: '子菜单二',
-              cnameKey: '/home/index2',
-              normalUrl: '/home/index2',
-              icon: 'icon-office-supplies-fill',
+              name: '子菜单二',
+              path: '/home/index2',
             },
           ],
+        },
+        {
+          name: '模块二',
+          path: '/home2',
+          icon: 'icon-twitter',
         },
       ],
     });

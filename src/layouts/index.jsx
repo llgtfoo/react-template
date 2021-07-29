@@ -1,60 +1,118 @@
-import { Breadcrumb, Layout, Menu } from 'antd';
-import React, { useEffect, useState } from 'react';
-import NavBar from '../components/NavBar/index';
+import RightSetting from '@/components/RightSetting/index';
+import { MediumOutlined } from '@ant-design/icons';
+import ProLayout, { PageContainer } from '@ant-design/pro-layout';
+import { Breadcrumb, Layout } from 'antd';
+import React, { useEffect, useRef, useState } from 'react';
+import { history } from 'umi';
 import { getMenus } from '../services/menu/index';
 import './index.less';
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
-export default function index(props) {
-  const [count, setCount] = useState(0);
-  const [collapsed, setCollapsed] = useState(false);
-  const [openKeys, setOpenKeys] = useState(['sub1']);
-  const [selectedKeys, setSelectedKeys] = useState(['1']);
-  useEffect(async () => {
-    const result = await getMenus();
-    console.log(result, 'result');
-  }, []);
+const { Header, Content, Footer } = Layout;
+export default ({ children }) => {
+  const [pathname, setPathname] = useState('');
+  const [mLoading, setMloading] = useState(true);
+  //设置默认打开路由
+  useEffect(() => {
+    const path = history.location.pathname;
+    setPathname(path);
+  });
+  //页面切换之前的拦截
+  const onPageChange = () => {};
+  const actionRef = useRef();
   return (
-    <>
-      <Layout className="layout-nav">
-        <NavBar></NavBar>
-        <Layout className="menu-main">
-          <Sider
-            width={208}
-            collapsible
-            collapsed={collapsed}
-            onCollapse={() => setCollapsed(!collapsed)}
-            className="site-layout-background"
+    <div
+      style={{
+        height: '100vh',
+      }}
+    >
+      <ProLayout
+        className="layout-box"
+        loading={mLoading}
+        actionRef={actionRef}
+        fixedHeader={true}
+        fixSiderbar={true}
+        headerTheme="dark"
+        navTheme="light"
+        layout="mix"
+        contentWidth="Fluid"
+        location={{
+          pathname,
+        }}
+        waterMarkProps={{
+          content: '系统名称',
+        }}
+        breadcrumbRender={(route) => route}
+        iconfontUrl="//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js"
+        //渲染logo和名称
+        headerTitleRender={() => {
+          return (
+            <div className="logo">
+              <MediumOutlined style={{ fontSize: '40px', color: '#1890ff' }} />
+              <span>系统名称</span>
+            </div>
+          );
+        }}
+        //渲染菜单项
+        menuItemRender={(item, dom) => (
+          <a
+            onClick={() => {
+              setPathname(item.path || '/home');
+              history.push(item.path);
+            }}
           >
-            <Menu
-              mode="inline"
-              openKeys={openKeys}
-              selectedKeys={selectedKeys}
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1']}
-              theme="dark"
-              style={{ height: '100%', borderRight: 0 }}
-            >
-              <SubMenu key="sub1" title={<>subnav 1</>}>
-                <Menu.Item key="1">option1</Menu.Item>
-                <Menu.Item key="2">option2</Menu.Item>
-                <Menu.Item key="3">option3</Menu.Item>
-                <Menu.Item key="4">option4</Menu.Item>
-              </SubMenu>
-            </Menu>
-          </Sider>
-          <Layout style={{ padding: '0 24px 24px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-            <Content className="site-layout-background">
-              {props.children}
-            </Content>
-          </Layout>
-        </Layout>
-      </Layout>
-    </>
+            {dom}
+          </a>
+        )}
+        //导航栏右侧
+        rightContentRender={() => <RightSetting />}
+        //获取菜单
+        menu={{
+          // type: 'sub',
+          // autoClose: true,
+          loading: mLoading,
+          params: {
+            name: 'llgtfoo',
+          },
+          onLoadingChange: (loading) => {
+            setMloading(loading);
+          },
+          request: async (params) => {
+            const { data } = await getMenus(params);
+            return data;
+          },
+        }}
+        // 页面切换时拦截
+        onPageChange={onPageChange}
+        footerRender={false}
+      >
+        <PageContainer
+          fixedHeader
+          header={{
+            // breadcrumb: '',
+            title: '',
+            //自定义面包屑
+            breadcrumbRender: (props, originBreadcrumb) => {
+              const breadcrumb = props.currentMenu.locale.split('.').slice(1);
+              return (
+                <Breadcrumb>
+                  {breadcrumb.map((item, index) => (
+                    <Breadcrumb.Item key={index}>{item}</Breadcrumb.Item>
+                  ))}
+                </Breadcrumb>
+              );
+            },
+          }}
+        >
+          <div
+            style={{
+              height: 'calc(100vh - 120px)',
+              padding: '14px',
+              background: '#fff',
+            }}
+          >
+            <main className="main-content">{children}</main>
+          </div>
+        </PageContainer>
+      </ProLayout>
+    </div>
   );
-}
+};
