@@ -15,6 +15,7 @@ export default {
           name: '模块一',
           path: '/home',
           icon: 'icon-shoucang1',
+
           children: [
             {
               name: '子菜单一',
@@ -30,6 +31,7 @@ export default {
           name: '模块二',
           path: '/home2',
           icon: 'icon-twitter',
+          // hideInMenu: true,
         },
       ],
     });

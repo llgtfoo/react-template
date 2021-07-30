@@ -23,6 +23,6 @@ export default defineConfig({
   proxy,
   fastRefresh: {},
   ignoreMomentLocale: true,
-  // mfsu: {},
+  mfsu: {},
   webpack5: {},
 });

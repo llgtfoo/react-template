@@ -28,14 +28,6 @@ export default [
               },
             ],
           },
-          // {
-          //   path: '/index',
-          //   component: '@/pages/Index/index',
-          // },
-          // {
-          //   path: '/demo',
-          //   component: '@/pages/Test/index',
-          // },
           {
             component: '@/pages/404',
           },

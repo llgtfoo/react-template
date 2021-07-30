@@ -16,7 +16,9 @@ export default ({ children }) => {
     setPathname(path);
   });
   //页面切换之前的拦截
-  const onPageChange = () => {};
+  const onPageChange = (Location) => {
+    console.log(Location, 'onPageChange');
+  };
   const actionRef = useRef();
   return (
     <div
@@ -66,8 +68,8 @@ export default ({ children }) => {
         rightContentRender={() => <RightSetting />}
         //获取菜单
         menu={{
-          // type: 'sub',
-          // autoClose: true,
+          type: 'sub',
+          autoClose: true,
           loading: mLoading,
           params: {
             name: 'llgtfoo',
@@ -110,6 +112,7 @@ export default ({ children }) => {
               height: 'calc(100vh - 120px)',
               padding: '14px',
               background: '#fff',
+              overflow: 'auto',
             }}
           >
             <main className="main-content">{children}</main>
