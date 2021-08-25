@@ -24,6 +24,7 @@ export default [
               },
               {
                 path: '/home/index2',
+                access: 'canAdmin',
                 component: '@/pages/module1/children/meus2/index',
               },
             ],

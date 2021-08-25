@@ -11,7 +11,7 @@ export default function Login(props) {
   const { initialState, setInitialState } = useModel('@@initialState');
   const fetchUserInfo = async () => {
     const userInfo = await initialState?.fetchUserInfo?.();
-
+    console.log(userInfo, 'userInfo');
     if (userInfo) {
       await setInitialState((s) => ({ ...s, currentUser: userInfo }));
     }

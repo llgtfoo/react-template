@@ -14,7 +14,7 @@ export default defineConfig({
     hmr: true,
   },
   targets: {
-    ie: 10,
+    ie: 9,
   },
   dynamicImport: {
     loading: '@ant-design/pro-layout/es/PageLoading',

@@ -109,10 +109,8 @@ export default ({ children }) => {
         >
           <div
             style={{
-              height: 'calc(100vh - 120px)',
               padding: '14px',
               background: '#fff',
-              overflow: 'auto',
             }}
           >
             <main className="main-content">{children}</main>
