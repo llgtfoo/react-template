@@ -31,12 +31,18 @@
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@umijs/preset-react": "1.x",
+    "@umijs/preset-react": "^1.8.22",
     "@umijs/test": "^3.5.13",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.0",
     "react-dev-inspector": "^1.6.0",
     "typescript": "^4.1.2",
     "yorkie": "^2.0.0"
-  }
+  },
+  "name": "react-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/llgtfoo/react-template.git",
+  "author": "前端小丑 <lltfoo@163.com>",
+  "license": "MIT"
 }
